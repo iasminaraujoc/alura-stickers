@@ -9,7 +9,6 @@ import java.util.Properties;
 *
 */
 public class ArquivoConfiguracao {
-
   
     public static Properties getProp() throws IOException
     {

@@ -1,15 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
-import java.util.Map;
-//import java.util.Properties;
-// import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -21,49 +13,38 @@ public class App {
         // url += chave.getProperty("prop.chaveacesso");
 
         String url = "https://mocki.io/v1/9a7c1ca9-29b4-4eb3-8306-1adb9d159060";
-        URI endereco = URI.create(url);
-        var client = HttpClient.newHttpClient();
-        var request = HttpRequest.newBuilder(endereco).GET().build();
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-        String body = response.body();
+        //String url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2022-03-24&end_date=2022-07-18";
+        var http = new ClienteHttp();
+        String json = http.buscaDados(url);
 
-        //pegar, extrair somente o dados que nos interessam (título, poster e a classificação) - parsear
+        ExtratorDeConteudo extrator = new ExtratorDeConteudoDoImdb();
+        List<Conteudo> conteudos = extrator.extraiConteudos(json);
 
-        var parser = new JsonParser();
-        List<Map<String, String>> listaDefilmes = parser.parse(body);
+        //pegar, extrair somente o dados que nos interessam (título, poster e a classificação) - parsear  
         var geradora = new GeradoraDeFigurinhas();
 
-        int contador = 0;
-        for (Map<String, String> filme: listaDefilmes){
+        for(int i = 0; i<3; i++){
             
-            
-            try{
-                String urlImagem = filme.get("image");
-                InputStream inputStream = new URL(urlImagem).openStream();
+            Conteudo conteudo = conteudos.get(i);
 
-                String titulo = filme.get("title");
-                String nomeArquivo = titulo + ".png";
+            try{
+               InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
+                String nomeArquivo = conteudo.getTitulo() + ".png";
 
                 geradora.cria(inputStream, nomeArquivo);
 
-                System.out.println(filme.get("title"));
-                System.out.println();
+                System.out.println(conteudo.getTitulo());
+                System.out.println(); 
+
             } catch (FileNotFoundException fne){
-                System.out.println("Imagem não encontrada! ");
-                contador++;
+                System.out.println("Imagem não encontrada!");
             }
-            
-
-            // System.out.println();
-            // Scanner leitor = new Scanner(System.in);
-            // int nota = leitor.nextInt();
-            // System.out.println(nota);
-            // System.out.println(filme.get("imDbRating"));
-            // System.out.println();
         }
-
-        //exibir e manipular os dados da forma como preferirmos
-        System.out.println(contador);
     }
 
+        //exibir e manipular os dados da forma como preferirmos
+        
 }
+
+
+
