@@ -12,8 +12,9 @@ public class App {
         // String url = "https://imdb-api.com/en/API/Top250Movies/";
         // url += chave.getProperty("prop.chaveacesso");
 
-        String url = "https://mocki.io/v1/9a7c1ca9-29b4-4eb3-8306-1adb9d159060";
+        //String url = "https://mocki.io/v1/9a7c1ca9-29b4-4eb3-8306-1adb9d159060";
         //String url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2022-03-24&end_date=2022-07-18";
+        String url = "https://alura-linguagens.herokuapp.com/linguagens";
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
 
@@ -23,7 +24,7 @@ public class App {
         //pegar, extrair somente o dados que nos interessam (título, poster e a classificação) - parsear  
         var geradora = new GeradoraDeFigurinhas();
 
-        for(int i = 0; i<3; i++){
+        for(int i = 0; i<2; i++){
             
             Conteudo conteudo = conteudos.get(i);
 
