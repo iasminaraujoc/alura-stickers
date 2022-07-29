@@ -1,18 +1,20 @@
-## Getting Started
+<h1 align="center"> Alura Stickers </h1>
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+![Badge em Desenvolvimento](https://imgur.com/byrTCQs.jpg) ![Badge em Desenvolvimento](https://imgur.com/iRmhv50.jpg) 
 
-## Folder Structure
+Projeto desenvolvido na Imersão Java, da Alura, em que foi desenvolvida uma aplicação para consumir diversas APIs e produzir figurinhas que podem ser enviadas no WhatsApp, Discord e Telegram, por exemplo.
 
-The workspace contains two folders by default, where:
+Dentre as APIs que podem ser consumidas, temos a do IMDB, a da Nasa e a de Linguagens de Programação, também desenvolvida durante a Imersão.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Técnicas e tecnologias utilizadas
+ - Linguagem de programação: `Java`
+ - Paradigma de programação: `POO`
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## 📁 Acesso ao projeto
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+O código do projeto pode ser baixado no [Github] (https://github.com/iasminaraujoc/alura-stickers).
 
-## Dependency Management
+## Autora
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+| [<img src="https://avatars.githubusercontent.com/u/84939115?s=400&u=b5d67bed540cbfef751b2ccdadaac9c5c6805316&v=4" width=115><br><sub>Iasmin Araújo</sub>](https://github.com/iasminaraujoc) 
+| :---: | 
